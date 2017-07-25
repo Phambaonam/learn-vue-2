@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn vue 2</title>
+</head>
+<body>
+
+<div id="root">
+    <!---------
+        * data: type must be object | function( accepted when used in a component definition )
+        * v-model: Data is binding directed.
+        * v-for: Array | Object | number | string
+        * v-text: string , update the element's textContent
+        * mounted:
+        * v-on:click, @click
+        * v-bind:title, :title ;
+        * v-bind:class, :class : we can pass an object into it to dynamically toggle classes.
+        * v-if: condition.
+        * computed:
+    --------->
+    <h2> This is strings is reversed:</h2>
+    <p> Using computed: {{ reversedMessage }} </p>
+    <p>Using method: {{ message }}</p>
+    <button @click="reverse_message">Reverse Message</button>
+
+    <h1>All Tasks</h1>
+    <ul>
+        <li v-for="task in tasks" v-text="task.description"></li>
+    </ul>
+
+    <h2>Tasks incomplete</h2>
+    <ul>
+        <li v-for="task in incompleteTasks" v-text="task.description"></li>
+    </ul>
+</div>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            message: 'Hello',
+            tasks: [
+                {description: 'Go to the store', completed: true},
+                {description: 'Finish screencast', completed: false},
+                {description: 'Make donation', completed: false},
+                {description: 'Clear inbox', completed: false},
+                {description: 'Make dinner', completed: false},
+                {description: 'Clean room', completed: true}
+            ]
+        },
+        methods: {
+            reverse_message(){
+                this.message = this.message.split('').reverse().join('')
+                console.log('value of message after click button:', this.message)
+            }
+        },
+        computed: {
+            reversedMessage(){
+                console.log('computed:', this.message);
+                return this.message.split('').reverse().join('')
+            },
+            incompleteTasks(){
+                // find tasks incomplete
+                return this.tasks.filter(task => !task.completed)
+                /***
+                 * code the same as above
+                 */
+//                this.tasks.filter(function(){
+//                    return ! task.completed
+//                })
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn vue 2</title>
+</head>
+<body>
+
+<div id="root">
+    <!---------
+        * data: type must be object | function( accepted when used in a component definition )
+        * v-model: Data is binding directed
+    --------->
+    <input type="text" id="input" v-model="message">
+    <p>The value of the input is: {{ message }}.</p>
+</div>
+
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script>
+    let data = {
+        message: 'Hello World'
+    }
+
+    new Vue({
+        el:'#root',
+        data: data
+    })
+
+    /***
+     * interactive with DOM element traditional
+     * @type {string}
+     */
+    //document.querySelector('#input').value = data.message
+
+</script>
+
+</body>
+</html>

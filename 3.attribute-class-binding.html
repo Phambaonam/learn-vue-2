@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn vue 2</title>
+    <style>
+        .color-red { color: red }
+        .is-loading { background: green}
+    </style>
+</head>
+<body>
+
+<div id="root">
+    <!---------
+        * data: type must be object | function( accepted when used in a component definition )
+        * v-model: Data is binding directed.
+        * v-for: Array | Object | number | string
+        * v-text: string , update the element's textContent
+        * mounted:
+        * v-on:click, @click
+        * v-bind:title, :title ;
+        * v-bind:class, :class : we can pass an object into it to dynamically toggle classes
+    --------->
+    <h1 :class="className">Hello</h1>
+
+    <button v-bind:title="title">Hover Over Me</button>
+
+    <button :class="{'is-loading': isLoading}" @click="toggleClass">Click me</button>
+</div>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+           title: 'I am the title of the button',
+           isLoading: false,
+           className: 'color-red'
+        },
+        methods: {
+            toggleClass(){
+                this.isLoading = true
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

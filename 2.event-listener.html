@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn vue 2</title>
+</head>
+<body>
+
+<div id="root">
+    <!---------
+        * data: type must be object | function( accepted when used in a component definition )
+        * v-model: Data is binding directed.
+        * v-for: Array | Object | number | string
+        * v-text: string , update the element's textContent
+        * mounted:
+        * v-on:click, @click : to handling user input.
+    --------->
+    <ul>
+        <li v-for="name in names" v-text="name"></li>
+    </ul>
+
+    <input id="input" type="text" v-model="newName">
+    <button v-on:click="addName">Add Name</button>
+</div>
+<script src="https://unpkg.com/vue@2.4.2"></script>
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            newName: '',
+            names: ['Jonh', 'Marry', 'Mark', 'Doreamon']
+        },
+        addName(){
+            this.names.push(this.newName)
+         },
+//        mounted(){
+//            document.querySelector('#button').addEventListener('click', () => {
+//                let name = document.querySelector('#input').value
+//                app.names.push(name)
+//                name.value = ''
+//            })
+//        }
+    })
+</script>
+
+</body>
+</html>
